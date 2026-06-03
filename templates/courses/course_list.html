@@ -1,0 +1,74 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<h2>Courses</h2>
+
+<a href="/courses/add/"
+   class="btn btn-success mb-3">
+
+   Add Course
+
+</a>
+
+<form method="GET" class="mb-3">
+
+    <input type="text"
+           name="search"
+           class="form-control"
+           placeholder="Search Course">
+
+</form>
+
+<table class="table table-bordered">
+
+    <thead class="table-dark">
+
+        <tr>
+            <th>ID</th>
+            <th>Course Name</th>
+            <th>Course Code</th>
+            <th>Actions</th>
+        </tr>
+
+    </thead>
+
+    <tbody>
+
+        {% for course in courses %}
+
+        <tr>
+
+            <td>{{ course.id }}</td>
+
+            <td>{{ course.course_name }}</td>
+
+            <td>{{ course.course_code }}</td>
+
+            <td>
+
+                <a href="/courses/update/{{ course.id }}/"
+                   class="btn btn-warning btn-sm">
+
+                    Edit
+
+                </a>
+
+                <a href="/courses/delete/{{ course.id }}/"
+                   class="btn btn-danger btn-sm">
+
+                    Delete
+
+                </a>
+
+            </td>
+
+        </tr>
+
+        {% endfor %}
+
+    </tbody>
+
+</table>
+
+{% endblock %}

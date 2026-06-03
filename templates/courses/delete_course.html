@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<h2>Delete Course</h2>
+
+<p>
+    Are you sure you want to delete:
+</p>
+
+<h4>
+    {{ course.course_name }}
+</h4>
+
+<form method="POST">
+
+    {% csrf_token %}
+
+    <button class="btn btn-danger">
+        Confirm Delete
+    </button>
+
+</form>
+
+{% endblock %}

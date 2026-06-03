@@ -1,0 +1,61 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<h2>Attendance List</h2>
+
+<a href="/attendance/add/"
+   class="btn btn-success mb-3">
+
+   Mark Attendance
+
+</a>
+
+<table class="table table-bordered">
+
+    <thead class="table-dark">
+
+        <tr>
+            <th>Student</th>
+            <th>Date</th>
+            <th>Status</th>
+        </tr>
+
+    </thead>
+
+    <tbody>
+
+    {% for a in attendance %}
+
+        <tr>
+
+            <td>{{ a.student }}</td>
+            <td>{{ a.date }}</td>
+
+            <td>
+
+                {% if a.status == 'Present' %}
+
+                    <span class="badge bg-success">
+                        Present
+                    </span>
+
+                {% else %}
+
+                    <span class="badge bg-danger">
+                        Absent
+                    </span>
+
+                {% endif %}
+
+            </td>
+
+        </tr>
+
+    {% endfor %}
+
+    </tbody>
+
+</table>
+
+{% endblock %}

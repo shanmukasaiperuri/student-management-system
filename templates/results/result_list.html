@@ -1,0 +1,84 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<h2>Student Results</h2>
+
+<a href="/results/add/"
+   class="btn btn-success mb-3">
+
+   Add Result
+
+</a>
+
+<table class="table table-bordered">
+
+    <thead class="table-dark">
+
+        <tr>
+            <th>Student</th>
+            <th>Subject</th>
+            <th>Marks</th>
+            <th>Status</th>
+            <th>Actions</th>
+        </tr>
+
+    </thead>
+
+    <tbody>
+
+    {% for result in results %}
+
+        <tr>
+
+            <td>{{ result.student }}</td>
+
+            <td>{{ result.subject }}</td>
+
+            <td>{{ result.marks }}</td>
+
+            <td>
+
+                {% if result.marks >= 35 %}
+
+                    <span class="badge bg-success">
+                        Pass
+                    </span>
+
+                {% else %}
+
+                    <span class="badge bg-danger">
+                        Fail
+                    </span>
+
+                {% endif %}
+
+            </td>
+
+            <td>
+
+                <a href="/results/update/{{ result.id }}/"
+                   class="btn btn-warning btn-sm">
+
+                    Edit
+
+                </a>
+
+                <a href="/results/delete/{{ result.id }}/"
+                   class="btn btn-danger btn-sm">
+
+                    Delete
+
+                </a>
+
+            </td>
+
+        </tr>
+
+    {% endfor %}
+
+    </tbody>
+
+</table>
+
+{% endblock %}

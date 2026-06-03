@@ -1,0 +1,56 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<h2>Teachers</h2>
+
+<a href="/teachers/add/"
+   class="btn btn-success mb-3">
+   Add Teacher
+</a>
+
+<table class="table table-bordered">
+
+    <thead class="table-dark">
+        <tr>
+            <th>ID</th>
+            <th>Name</th>
+            <th>Email</th>
+            <th>Phone</th>
+            <th>Course</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+
+    <tbody>
+
+    {% for teacher in teachers %}
+
+        <tr>
+            <td>{{ teacher.id }}</td>
+            <td>{{ teacher.name }}</td>
+            <td>{{ teacher.email }}</td>
+            <td>{{ teacher.phone }}</td>
+            <td>{{ teacher.course }}</td>
+
+            <td>
+                <a href="/teachers/update/{{ teacher.id }}/"
+                   class="btn btn-warning btn-sm">
+                   Edit
+                </a>
+
+                <a href="/teachers/delete/{{ teacher.id }}/"
+                   class="btn btn-danger btn-sm">
+                   Delete
+                </a>
+            </td>
+
+        </tr>
+
+    {% endfor %}
+
+    </tbody>
+
+</table>
+
+{% endblock %}

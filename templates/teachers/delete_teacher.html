@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<h2>Delete Teacher</h2>
+
+<p>Are you sure you want to delete:</p>
+
+<h4>{{ teacher.name }}</h4>
+
+<form method="POST">
+
+    {% csrf_token %}
+
+    <button class="btn btn-danger">
+        Confirm Delete
+    </button>
+
+</form>
+
+{% endblock %}
